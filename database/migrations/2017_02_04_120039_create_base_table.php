@@ -20,11 +20,33 @@ class CreateBaseTable extends Migration
             $table->string('lastname');
             $table->string('nickname')->unique();
             $table->char('gender', 1);
-            $table->string('email', 96)->unique();
-            $table->string('password');
+            $table->string('email')->unique();
+            $table->string('password', 96);
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('meal', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('availabledate');
+            $table->string('breakfast');
+            $table->string('lunch');
+            $table->string('soup');
+            $table->string('teatime');
+            $table->string('dinner');
+            $table->string('supper');
+            $table->timestamps();
+        });
+
+
+        Schema::create('holiday', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('date');
+            $table->string('holiday');
+            $table->string('description');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -35,5 +57,7 @@ class CreateBaseTable extends Migration
     public function down()
     {
         Schema::dropIfExists('user');
+        Schema::dropIfExists('meal');
+        Schema::dropIfExists('holiday');
     }
 }
