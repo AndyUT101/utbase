@@ -152,6 +152,8 @@ class ImportController extends Controller
                         'lunch2' => $row['lunch2'],
                         'soup1' => $row['soup1'],
                         'soup2' => $row['soup2'],
+                        'fruit1' => $row['fruit1'],
+                        'fruit2' => $row['fruit2'],
                         'teatime1' => $row['teatime1'],
                         'teatime2' => $row['teatime2'],
                         'dinner1' => $row['dinner1'],

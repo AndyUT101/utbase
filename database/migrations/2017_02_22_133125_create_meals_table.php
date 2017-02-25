@@ -23,6 +23,8 @@ class CreateMealsTable extends Migration
             $table->string('lunch2')->nullable();
             $table->string('soup1')->nullable();
             $table->string('soup2')->nullable();
+            $table->string('fruit1')->nullable();
+            $table->string('fruit2')->nullable();
             $table->string('teatime1')->nullable();
             $table->string('teatime2')->nullable();
             $table->string('dinner1')->nullable();

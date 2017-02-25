@@ -28,6 +28,8 @@ class Meal extends Model
 				'lunch2',
 				'soup1',
 				'soup2',
+				'fruit1',
+				'fruit2',
 				'teatime1',
 				'teatime2',
 				'dinner1',
@@ -37,7 +39,4 @@ class Meal extends Model
 				];
 				
 	protected $dates = ['availabledate'];
-	//protected $primaryKey = 'availabledate';
-
-
 }
