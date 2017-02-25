@@ -103,10 +103,39 @@ class DisplayController extends Controller
             break;
 
           case 'meal':
-            $rawdata = DB::table('meals') 
+            $todaydata = DB::table('meals') 
             -> where('availabledate', '=', Carbon::today()->toDateString()) 
             -> get();
-            return $rawdata;
+
+            $tmrdata = DB::table('meals') 
+            -> where('availabledate', '=', Carbon::tomorrow()->toDateString()) 
+            -> get();
+
+            $exportdata = null;
+            if (count($todaydata) == 1){
+                $exportdata['availabledate'] = $todaydata[0] -> availabledate;
+                $exportdata['breakfast1'] = $todaydata[0] -> breakfast1;
+                $exportdata['breakfast2'] = $todaydata[0] -> breakfast2;
+                $exportdata['lunch1'] = $todaydata[0] -> lunch1;
+                $exportdata['lunch2'] = $todaydata[0] -> lunch2;
+                $exportdata['soup1'] = $todaydata[0] -> soup1;
+                $exportdata['soup2'] = $todaydata[0] -> soup2;
+                $exportdata['fruit1'] = $todaydata[0] -> fruit1;
+                $exportdata['fruit2'] = $todaydata[0] -> fruit2;
+                $exportdata['teatime1'] = $todaydata[0] -> teatime1;
+                $exportdata['teatime2'] = $todaydata[0] -> teatime2;
+                $exportdata['dinner1'] = $todaydata[0] -> dinner1;
+                $exportdata['dinner2'] = $todaydata[0] -> dinner2;
+                $exportdata['supper1'] = $todaydata[0] -> supper1;
+                $exportdata['supper2'] = $todaydata[0] -> supper2;
+            }
+
+            if (count($tmrdata) == 1){
+                $exportdata['tmr1'] = $tmrdata[0] -> breakfast1;
+                $exportdata['tmr2'] = $tmrdata[0] -> breakfast2;
+            }
+
+            return $exportdata;
             break;
 
           default:

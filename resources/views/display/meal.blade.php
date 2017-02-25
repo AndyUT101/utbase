@@ -32,68 +32,49 @@ div.meal div {
 
 div.meal div p {
 	width: 285px;
-	margin-bottom: 40px;
+	margin-bottom: 35px;
 	overflow: hidden;
     height: 80px;
 }
 
 div.meal div.breakfast {
-	top: 335px;
+	top: 340px;
 	left: 60px;
 }
 
 div.meal div.lunch {
-	top: 335px;
+	top: 340px;
 	left: 410px;
 }
 
 div.meal div.soup {
-	top: 335px;
+	top: 340px;
 	left: 752px;
 }
 
 div.meal div.fruit {
-	top: 335px;
+	top: 340px;
 	left: 1098px;
 }
 
 div.meal div.teatime {
-	top: 675px;
+	top: 685px;
 	left: 60px;
 }
 
 div.meal div.dinner {
-	top: 675px;
+	top: 685px;
 	left: 410px;
 }
 
 div.meal div.supper {
-	top: 675px;
+	top: 685px;
 	left: 752px;
 }
 
-div.meal div.date {
-	font-size: 30px;
-	position: absolute;
-	top: 380px;
-	left: 50%;
-	margin-left: -219px;
-}
-
-div.meal div.lunar {
-	font-size: 30px;
-	position: absolute;
-	top: 620px;
-	left: 50%;
-	margin-left: -219px;
-}
-
-div.meal div.temp {
-	font-size: 30px;
-	position: absolute;
-	top: 850px;
-	left: 50%;
-	margin-left: -219px;
+div.meal div.tmr {
+	top: 685px;
+	left: 1098px;
 }
 </style>
 <script>
@@ -119,20 +100,22 @@ function getCurrentMeal(){
 	    dataType:'json',
 
 	    success: function(data){
-	        document.getElementById('breakfast1').innerHTML = data[0]['breakfast1'];
-	        document.getElementById('breakfast2').innerHTML = data[0]['breakfast2'];
-	        document.getElementById('lunch1').innerHTML = data[0]['lunch1'];
-	        document.getElementById('lunch2').innerHTML = data[0]['lunch2'];
-	        document.getElementById('soup1').innerHTML = data[0]['soup1'];
-	        document.getElementById('soup2').innerHTML = data[0]['soup2'];
-	        document.getElementById('fruit1').innerHTML = data[0]['fruit1'];
-	        document.getElementById('fruit2').innerHTML = data[0]['fruit2'];
-	        document.getElementById('teatime1').innerHTML = data[0]['teatime1'];
-	        document.getElementById('teatime2').innerHTML = data[0]['teatime2'];
-	        document.getElementById('dinner1').innerHTML = data[0]['dinner1'];
-	        document.getElementById('dinner2').innerHTML = data[0]['dinner2'];
-	        document.getElementById('supper1').innerHTML = data[0]['supper1'];
-	        document.getElementById('supper2').innerHTML = data[0]['supper2'];
+	        document.getElementById('breakfast1').innerHTML = data['breakfast1'];
+	        document.getElementById('breakfast2').innerHTML = data['breakfast2'];
+	        document.getElementById('lunch1').innerHTML = data['lunch1'];
+	        document.getElementById('lunch2').innerHTML = data['lunch2'];
+	        document.getElementById('soup1').innerHTML = data['soup1'];
+	        document.getElementById('soup2').innerHTML = data['soup2'];
+	        document.getElementById('fruit1').innerHTML = data['fruit1'];
+	        document.getElementById('fruit2').innerHTML = data['fruit2'];
+	        document.getElementById('teatime1').innerHTML = data['teatime1'];
+	        document.getElementById('teatime2').innerHTML = data['teatime2'];
+	        document.getElementById('dinner1').innerHTML = data['dinner1'];
+	        document.getElementById('dinner2').innerHTML = data['dinner2'];
+	        document.getElementById('supper1').innerHTML = data['supper1'];
+	        document.getElementById('supper2').innerHTML = data['supper2'];
+	        document.getElementById('tmr1').innerHTML = data['tmr1'];
+	        document.getElementById('tmr2').innerHTML = data['tmr2'];
 
 	        console.log("weather data updated.");
 
@@ -223,6 +206,11 @@ loop();
 		<div class="supper">
 			<p id="supper1"></p>
 			<p id="supper2"></p>
+		</div>
+
+		<div class="tmr">
+			<p id="tmr1"></p>
+			<p id="tmr2"></p>
 		</div>
 
 	</div>
