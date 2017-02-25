@@ -86,6 +86,7 @@ class DisplayController extends Controller
      */
     public function getJSON($updateitem)
     {
+        date_default_timezone_set("Asia/Hong_Kong");
         switch ($updateitem) {
           case 'timeweather':
           case 'newsfeed':

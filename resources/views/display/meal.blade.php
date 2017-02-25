@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <title>meal</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{{ url('js/flowtype.js') }}"></script>
 <style>
 
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 * {
-	font-family: 'Noto Sans TC', sans-serif; font-size: 48px;
+	font-family: 'Noto Sans TC', sans-serif; font-size: 36px;
+}
+
+p {
+	margin: 0; padding: 0;
 }
 
 div.meal {
@@ -18,19 +23,51 @@ div.meal {
 	background-image: url("{{ url('images/bg/meal.jpg') }}");
 }
 
-div.timeweather div {
-	width:100%;
+div.meal div {
+	width: 285px;
+	height: 185px;
+    position: absolute;
 	text-align: center;
 }
 
-div.timeweather div.time {
-	position: absolute;
-	top: 150px;
-	left: 50%;
-	margin-left: -219px;
+div.meal div p {
+	width: 285px;
+	margin-bottom: 40px;
+	overflow: hidden;
+    height: 80px;
 }
 
-div.timeweather div.date {
+div.meal div.breakfast {
+	top: 335px;
+	left: 60px;
+}
+
+div.meal div.lunch {
+	top: 335px;
+	left: 410px;
+}
+
+div.meal div.soup {
+	top: 335px;
+	left: 752px;
+}
+
+div.meal div.teatime {
+	top: 900px;
+	left: 1098px;
+}
+
+div.meal div.dinner {
+	top: 675px;
+	left: 410px;
+}
+
+div.meal div.supper {
+	top: 675px;
+	left: 752px;
+}
+
+div.meal div.date {
 	font-size: 30px;
 	position: absolute;
 	top: 380px;
@@ -38,7 +75,7 @@ div.timeweather div.date {
 	margin-left: -219px;
 }
 
-div.timeweather div.lunar {
+div.meal div.lunar {
 	font-size: 30px;
 	position: absolute;
 	top: 620px;
@@ -46,7 +83,7 @@ div.timeweather div.lunar {
 	margin-left: -219px;
 }
 
-div.timeweather div.temp {
+div.meal div.temp {
 	font-size: 30px;
 	position: absolute;
 	top: 850px;
@@ -65,60 +102,8 @@ var weatherdata = null;
 
 $(document).ready(function(){
 
-// <--- Date and Time --->
-function displayDate() {
-	var y = currentDateTime.getFullYear();
-	var m = currentDateTime.getMonth();
-	var d = currentDateTime.getDate();
-    document.getElementById('current_date').innerHTML =
-    y + "年" + m + "月" + d + "日";
-}
-
-function displayTime() {
-	var ap = currentDateTime.getHours() < 12 ? 'am' : 'pm';
-    var h = currentDateTime.getHours() % 12;
-    var m = currentDateTime.getMinutes();
-    var s = currentDateTime.getSeconds();
-    if (currentDateTime.getHours() / 12)
-    h = (h == 0) ? 12 : h;
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('current_time').innerHTML =
-    h + ":" + m + ":" + s + " " + ap;
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-
-// End <--- Date and Time --->
 
 
-// <--- Lunar Calendar Calulation --->
-var numString="十一二三四五六七八九十";
-var lMString="正二三四五六七八九十冬臘";
-
-
-function displayCurrentLunarDate(){
-	    document.getElementById('current_lunar').innerHTML = getLunarDateStr(currentDateTime);
-}
-
-function getLunarDateStr(date){
-    var tY = date.getFullYear();
-    var tM = date.getMonth();
-    var tD = date.getDate();
-    var l = new Lunar(date);
-    var lM = l.month.toFixed(0);
-    var pre = (l.isLeap) ? '閏' : '';
-    var mStr = pre + lMString[lM-1] + '月';
-    var lD = l.day.toFixed(0) - 1;
-    pre = (lD <= 10) ? '初' : ((lD <= 19) ? '十' : ((lD <= 29) ? '廿' : '三'));
-    var dStr = pre + numString[lD % 10];
-    return mStr + dStr;
-}
-
-function lYearDays(a){var n,s=348;for(n=32768;n>8;n>>=1)s+=lunarInfo[a-1900]&n?1:0;return s+leapDays(a)}function leapDays(a){return leapMonth(a)?65536&lunarInfo[a-1900]?30:29:0}function leapMonth(a){return 15&lunarInfo[a-1900]}function monthDays(a,n){return lunarInfo[a-1900]&65536>>n?30:29}function Lunar(a){var n,s=0,t=0,i=new Date(1900,0,31),e=(a-i)/864e5;for(this.dayCyl=e+40,this.monCyl=14,n=1900;2050>n&&e>0;n++)t=lYearDays(n),e-=t,this.monCyl+=12;for(0>e&&(e+=t,n--,this.monCyl-=12),this.year=n,this.yearCyl=n-1864,s=leapMonth(n),this.isLeap=!1,n=1;13>n&&e>0;n++)s>0&&n==s+1&&0==this.isLeap?(--n,this.isLeap=!0,t=leapDays(this.year)):t=monthDays(this.year,n),1==this.isLeap&&n==s+1&&(this.isLeap=!1),e-=t,0==this.isLeap&&this.monCyl++;0==e&&s>0&&n==s+1&&(this.isLeap?this.isLeap=!1:(this.isLeap=!0,--n,--this.monCyl)),0>e&&(e+=t,--n,--this.monCyl),this.month=n,this.day=e+1}var lunarInfo=[19416,19168,42352,21717,53856,55632,91476,22176,39632,21970,19168,42422,42192,53840,119381,46400,54944,44450,38320,84343,18800,42160,46261,27216,27968,109396,11104,38256,21234,18800,25958,54432,59984,28309,23248,11104,100067,37600,116951,51536,54432,120998,46416,22176,107956,9680,37584,53938,43344,46423,27808,46416,86869,19872,42448,83315,21200,43432,59728,27296,44710,43856,19296,43748,42352,21088,62051,55632,23383,22176,38608,19925,19152,42192,54484,53840,54616,46400,46496,103846,38320,18864,43380,42160,45690,27216,27968,44870,43872,38256,19189,18800,25776,29859,59984,27480,21952,43872,38613,37600,51552,55636,54432,55888,30034,22176,43959,9680,37584,51893,43344,46240,47780,44368,21977,19360,42416,86390,21168,43312,31060,27296,44368,23378,19296,42726,42208,53856,60005,54576,23200,30371,38608,19415,19152,42192,118966,53840,54560,56645,46496,22224,21938,18864,42359,42160,43600,111189,27936,44448];
-// End <--- Lunar Calendar Calulation --->
 
 
 // <--- Get meal --->
@@ -129,8 +114,29 @@ function getCurrentMeal(){
 	    dataType:'json',
 
 	    success: function(data){
-	        document.getElementById('current_temp').innerHTML = data['main']['temp'].toFixed(1) + " ℃";
+	        document.getElementById('breakfast1').innerHTML = data[0]['breakfast1'];
+	        document.getElementById('breakfast2').innerHTML = data[0]['breakfast2'];
+	        document.getElementById('lunch1').innerHTML = data[0]['lunch1'];
+	        document.getElementById('lunch2').innerHTML = data[0]['lunch2'];
+	        document.getElementById('soup1').innerHTML = data[0]['soup1'];
+	        document.getElementById('soup2').innerHTML = data[0]['soup2'];
+	        document.getElementById('teatime1').innerHTML = data[0]['teatime1'];
+	        document.getElementById('teatime2').innerHTML = data[0]['teatime2'];
+	        document.getElementById('dinner1').innerHTML = data[0]['dinner1'];
+	        document.getElementById('dinner2').innerHTML = data[0]['dinner2'];
+	        document.getElementById('supper1').innerHTML = data[0]['supper1'];
+	        document.getElementById('supper2').innerHTML = data[0]['supper2'];
+
 	        console.log("weather data updated.");
+
+	        $('div.meal div p').flowtype({
+			minimum   : 250,
+			maximum   : 285,
+			minFont   : 26,
+			maxFont   : 40,
+			fontRatio : 30,
+			lineRatio : 1.45
+			});
 	    },
 
 	     error:function(xhr, ajaxOptions, thrownError){ 
@@ -144,6 +150,16 @@ function getCurrentMeal(){
 }
 
 getCurrentMeal();
+
+
+$('body').flowtype({
+minimum   : 250,
+maximum   : 285,
+minFont   : 26,
+maxFont   : 40,
+fontRatio : 30,
+lineRatio : 1.45
+});
 
 // <--- Init loop object--->
 function loop(){
@@ -167,10 +183,36 @@ loop();
 
 <body>
 	<div class="meal">
-		<div class="time"><span id="current_time"></span></div>
-		<div class="date"><span id="current_date"></span></div>
-		<div class="lunar"><span id="current_lunar"></span></div>
-		<div class="temp"><span id="current_temp"></span></div>
+		<div class="breakfast">
+			<p id="breakfast1"></p>
+			<p id="breakfast2"></p>
+		</div>
+
+		<div class="lunch">
+			<p id="lunch1"></p>
+			<p id="lunch2"></p>
+		</div>
+
+		<div class="soup">
+			<p id="soup1"></p>
+			<p id="soup2"></p>
+		</div>
+
+		<div class="teatime">
+			<p id="teatime1"></p>
+			<p id="teatime2"></p>
+		</div>
+
+		<div class="dinner">
+			<p id="dinner1"></p>
+			<p id="dinner2"></p>
+		</div>
+
+		<div class="supper">
+			<p id="supper1"></p>
+			<p id="supper2"></p>
+		</div>
+
 	</div>
 </body>
 
