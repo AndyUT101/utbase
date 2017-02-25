@@ -2,9 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>meal</title>
+<title>newsfeed</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="{{ url('js/flowtype.js') }}"></script>
+<script>
+	jQuery.browser = {};
+(function () {
+
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+</script>
+<script src="{{ url('js/jquery.jfeed.js') }}"></script>
 <style>
 
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
@@ -16,84 +29,30 @@ p {
 	margin: 0; padding: 0;
 }
 
-div.meal {
-	width: 1482px;
-	height: 954px;
-	position: relative;
-	background-image: url("{{ url('images/bg/meal.jpg') }}");
+p#newstitle {
+	padding: 20px;
+    font-size: 50px;
 }
 
-div.meal div {
+div.newsfeed {
+	width: 1920px;
+	height: 126px;
+	position: relative;
+	background-image: url("{{ url('images/bg/newsfeed.jpg') }}");
+}
+
+div.newsfeed div {
 	width: 285px;
 	height: 185px;
     position: absolute;
 	text-align: center;
 }
 
-div.meal div p {
+div.newsfeed div p {
 	width: 285px;
 	margin-bottom: 40px;
 	overflow: hidden;
     height: 80px;
-}
-
-div.meal div.breakfast {
-	top: 335px;
-	left: 60px;
-}
-
-div.meal div.lunch {
-	top: 335px;
-	left: 410px;
-}
-
-div.meal div.soup {
-	top: 335px;
-	left: 752px;
-}
-
-div.meal div.fruit {
-	top: 335px;
-	left: 1098px;
-}
-
-div.meal div.teatime {
-	top: 675px;
-	left: 60px;
-}
-
-div.meal div.dinner {
-	top: 675px;
-	left: 410px;
-}
-
-div.meal div.supper {
-	top: 675px;
-	left: 752px;
-}
-
-div.meal div.date {
-	font-size: 30px;
-	position: absolute;
-	top: 380px;
-	left: 50%;
-	margin-left: -219px;
-}
-
-div.meal div.lunar {
-	font-size: 30px;
-	position: absolute;
-	top: 620px;
-	left: 50%;
-	margin-left: -219px;
-}
-
-div.meal div.temp {
-	font-size: 30px;
-	position: absolute;
-	top: 850px;
-	left: 50%;
-	margin-left: -219px;
 }
 </style>
 <script>
@@ -103,16 +62,27 @@ var currentDateTime = new Date();
 var updatefreq = 500;
 var weather_updatefreq = 144000;
 var weatherdata = null;
+var datadata;
+var rthk_news_xml = "http://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
 // End <--- Init data object--->
 
 $(document).ready(function(){
 
+ jQuery.getFeed({
+   url: rthk_news_xml,
+   success: function(feed) {
+     datadata = feed;
+     document.getElementById('newstitle').innerHTML = feed['items'][0]['title'] + " (" + 
+     	datadata['items'][0]['updated'].substring(datadata['items'][0]['updated'].length-14, datadata['items'][0]['updated'].length-9)
+      + ")";
+     
+   }
+ });
 
 
 
-
-// <--- Get meal --->
-function getCurrentMeal(){
+// <--- Get newsfeed --->
+/*function getCurrentnewsfeed(){
 	$.ajax({
 	    url: "{{ url($displayitem) }}",
 	    type:"GET",
@@ -136,7 +106,7 @@ function getCurrentMeal(){
 
 	        console.log("weather data updated.");
 
-	        $('div.meal div p').flowtype({
+	        $('div.newsfeed div p').flowtype({
 			minimum   : 250,
 			maximum   : 285,
 			minFont   : 26,
@@ -151,30 +121,17 @@ function getCurrentMeal(){
 	     }
 	});
 
-	var weatherupdate_timeout = setTimeout(getCurrentMeal, weather_updatefreq);
+	var weatherupdate_timeout = setTimeout(getCurrentnewsfeed, weather_updatefreq);
 
 	
-}
+}*/
 
-getCurrentMeal();
-
-
-$('body').flowtype({
-minimum   : 250,
-maximum   : 285,
-minFont   : 26,
-maxFont   : 40,
-fontRatio : 30,
-lineRatio : 1.45
-});
+getCurrentnewsfeed();
 
 // <--- Init loop object--->
 function loop(){
 	currentDateTime = new Date();
 
-	displayDate();
-	displayCurrentLunarDate();
-	displayTime();
 	var looptimeout = setTimeout(loop, updatefreq);
 }
 loop();
@@ -189,42 +146,8 @@ loop();
 </head>
 
 <body>
-	<div class="meal">
-		<div class="breakfast">
-			<p id="breakfast1"></p>
-			<p id="breakfast2"></p>
-		</div>
-
-		<div class="lunch">
-			<p id="lunch1"></p>
-			<p id="lunch2"></p>
-		</div>
-
-		<div class="soup">
-			<p id="soup1"></p>
-			<p id="soup2"></p>
-		</div>
-
-		<div class="fruit">
-			<p id="fruit1"></p>
-			<p id="fruit2"></p>
-		</div>
-
-		<div class="teatime">
-			<p id="teatime1"></p>
-			<p id="teatime2"></p>
-		</div>
-
-		<div class="dinner">
-			<p id="dinner1"></p>
-			<p id="dinner2"></p>
-		</div>
-
-		<div class="supper">
-			<p id="supper1"></p>
-			<p id="supper2"></p>
-		</div>
-
+	<div class="newsfeed">
+		<p id="newstitle"></p>
 	</div>
 </body>
 
