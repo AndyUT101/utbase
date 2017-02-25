@@ -19,3 +19,22 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
+
+Route::get('/import/process/{excelkey}', 'ImportController@importDB');
+Route::get('/import/list/{excelkey}', 'ImportController@prepareimport');
+Route::get('/import/{doctype}', 'ImportController@index');
+Route::get('/resource/template', 'ImportController@downloadtemplate');
+Route::resource('/import', 'ImportController');
+
+Route::get('/db', 'DBTestController@index');
+Route::get('/setting/timeweather', 'DisplayController@getWeather');
+Route::get('/setting/newsfeed', 'DisplayController@getNewsfeed');
+
+Route::get('/api/{updateitem}', 'DisplayController@getJSON');
+
+Route::get('/display/{displayitem}', 'DisplayController@showDisplay');
+
+Route::post('/setting/{updateitem}/update', 'DisplayController@update');
+
+
+Route::post('/import/{doctype}', 'ImportController@processxls');

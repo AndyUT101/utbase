@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Session;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -24,11 +27,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        date_default_timezone_set("Asia/Hong_Kong");
+
+        $recent_meal = DB::table('meals') -> where('availabledate', '>=', Carbon::today()->toDateString()) -> orderBy('availabledate', 'asc') -> take(3) -> get();;
+
+        //return $recent_meal;
+        $data = array(
+            'title' => '主目錄',
+            'navtitle' => 'index',
+            'recently_meal' => $recent_meal,
+            );
+        return view('home', $data);
     }
 
     public function logout() {
-        Session::flush(); 
+        Auth::logout();
         return redirect()->action('HomeController@index');
     }
 }
