@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>timeweather</title>
+<title>meal</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
 
@@ -11,11 +11,11 @@
 	font-family: 'Noto Sans TC', sans-serif; font-size: 48px;
 }
 
-div.timeweather {
-	width: 438px;
+div.meal {
+	width: 1482px;
 	height: 954px;
 	position: relative;
-	background-image: url("{{ url('images/bg/timeweather.jpg') }}");
+	background-image: url("{{ url('images/bg/meal.jpg') }}");
 }
 
 div.timeweather div {
@@ -60,7 +60,6 @@ div.timeweather div.temp {
 var currentDateTime = new Date();
 var updatefreq = 500;
 var weather_updatefreq = 144000;
-var weather_api_url = "http://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=92d11c0662b0aef09636babec2b18091";
 var weatherdata = null;
 // End <--- Init data object--->
 
@@ -122,10 +121,10 @@ function lYearDays(a){var n,s=348;for(n=32768;n>8;n>>=1)s+=lunarInfo[a-1900]&n?1
 // End <--- Lunar Calendar Calulation --->
 
 
-// <--- Get weather data--->
-function getCurrentTemp(){
+// <--- Get meal --->
+function getCurrentMeal(){
 	$.ajax({
-	    url: weather_api_url,
+	    url: "{{ url($displayitem) }}",
 	    type:"GET",
 	    dataType:'json',
 
@@ -139,12 +138,12 @@ function getCurrentTemp(){
 	     }
 	});
 
-	var weatherupdate_timeout = setTimeout(getCurrentTemp, weather_updatefreq);
+	var weatherupdate_timeout = setTimeout(getCurrentMeal, weather_updatefreq);
 
 	
 }
 
-getCurrentTemp();
+getCurrentMeal();
 
 // <--- Init loop object--->
 function loop(){
@@ -167,7 +166,7 @@ loop();
 </head>
 
 <body>
-	<div class="timeweather">
+	<div class="meal">
 		<div class="time"><span id="current_time"></span></div>
 		<div class="date"><span id="current_date"></span></div>
 		<div class="lunar"><span id="current_lunar"></span></div>
