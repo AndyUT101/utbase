@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Session;
-use Redirect;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,6 +29,6 @@ class HomeController extends Controller
 
     public function logout() {
         Session::flush(); 
-        return Redirect::to('/');
+        return redirect()->action('HomeController@index');
     }
 }

@@ -29,12 +29,18 @@ class CreateBaseTable extends Migration
         Schema::create('meal', function (Blueprint $table) {
             $table->increments('id');
             $table->date('availabledate');
-            $table->string('breakfast');
-            $table->string('lunch');
-            $table->string('soup');
-            $table->string('teatime');
-            $table->string('dinner');
-            $table->string('supper');
+            $table->string('breakfast1');
+            $table->string('breakfast2');
+            $table->string('lunch1');
+            $table->string('lunch2');
+            $table->string('soup1');
+            $table->string('soup2');
+            $table->string('teatime1');
+            $table->string('teatime2');
+            $table->string('dinner1');
+            $table->string('dinner2');
+            $table->string('supper1');
+            $table->string('supper2');
             $table->timestamps();
         });
 
