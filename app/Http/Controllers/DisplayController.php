@@ -192,6 +192,25 @@ class DisplayController extends Controller
      */
     public function showDisplay($displayitem)
     {
-        return view('display/' . $displayitem);
+        $data = null;
+
+        switch ($displayitem) {
+            case 'meal':
+            case 'newsfeed':
+                $data = array(
+                    'displayitem' => '/api/' . $displayitem);
+                break;
+
+            case 'timeweather':
+                $data = array(
+                    'displayitem' => '');
+                break;
+            
+            default:
+                return [];
+                break;
+        }
+
+        return view('display/' . $displayitem, $data);
     }
 }
