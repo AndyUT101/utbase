@@ -69,7 +69,7 @@ $(document).ready(function(){
 // <--- Date and Time --->
 function displayDate() {
 	var y = currentDateTime.getFullYear();
-	var m = currentDateTime.getMonth();
+	var m = currentDateTime.getMonth() + 1;
 	var d = currentDateTime.getDate();
     document.getElementById('current_date').innerHTML =
     y + "年" + m + "月" + d + "日";
