@@ -14,7 +14,7 @@
     <div class="panel panel-cascade panel-file-upload">
       <div class="panel-heading">
         <h3 class="panel-title">
-               File uploader
+               上傳檔案 (.xlsx)
                <span class="pull-right">
                 <a  href="#" class="panel-minimize"><i class="fa fa-chevron-up"></i></a>
                 <a  href="#"  class="panel-settings"><i class="fa fa-cog"></i></a>
@@ -26,7 +26,7 @@
         <form id="upload" method="post" action="{{ url('/import/timetable') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div id="drop">
-            Drop Here
+            拖放檔案到此
             <br />
             <a>Browse</a>
             <input type="file" name="uploaddoc" />
