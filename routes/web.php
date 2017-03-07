@@ -34,7 +34,7 @@ Route::get('/api/{updateitem}', 'DisplayController@getJSON');
 
 Route::get('/display/{displayitem}', 'DisplayController@showDisplay');
 
-Route::post('/setting/{updateitem}/update', 'DisplayController@update');
+Route::post('/setting/{updateitem}/update', 'SettingController@update');
 
 
 Route::post('/import/{doctype}', 'ImportController@processxls');

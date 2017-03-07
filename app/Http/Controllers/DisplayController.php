@@ -10,16 +10,6 @@ use App\Setting;
 class DisplayController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -144,74 +134,6 @@ class DisplayController extends Controller
 
         }
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $updateitem)
-    {
-        // $available_updateKey = array('timeweather', 'newsfeed');
-        $requestKeyValue = $request -> all();
-        unset($requestKeyValue['_token']);
-        switch ($updateitem) {
-          case 'timeweather':
-            $title = "天氣及時間";
-            break;
-
-          case 'newsfeed':
-            $title = "新聞資訊";
-            break;
-
-          default:
-            return ['error'];
-            break;
-        }
-
-        $updatesetting = Setting::updateOrCreate(
-          ['setting_key' => $updateitem],
-          array(
-            'setting_key' => $updateitem,
-            'setting_value' => json_encode($requestKeyValue),
-          ));
-        
-
-        $data = array(
-            'title' => $title,
-            'navtitle' => $updateitem,
-            'actionpath' => '/setting/' . $updateitem .'/update',
-            'postdata' => $requestKeyValue,
-            'error' => null,
-            'success' => true,
-            );
-
-        return view('settings/' . $updateitem, $data);
     }
 
     /**
