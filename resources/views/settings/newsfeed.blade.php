@@ -22,13 +22,13 @@
             <label class="col-sm-3 control-label">尺寸</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">闊度</span>
                     <input type="number" class="form-control" id="news_width" name="news_width" placeholder="預設值" id="news_width" name="news_width" @if (isset($postdata['news_width'])) value="{{ $postdata['news_width'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">高度</span>
                     <input type="number" class="form-control" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" @if (isset($postdata['news_height'])) value="{{ $postdata['news_height'] }}" @endif>
@@ -109,13 +109,13 @@
             <label class="col-sm-3 control-label">新聞資訊位移</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">X-Pos</span>
                     <input type="number" class="form-control" id="news_xpos" name="news_xpos" placeholder="預設值" id="news_xpos" name="news_xpos" @if (isset($postdata['news_xpos'])) value="{{ $postdata['news_xpos'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">Y-Pos</span>
                     <input type="number" class="form-control" id="news_ypos" name="news_ypos" placeholder="預設值" id="news_ypos" name="news_ypos" placeholder="預設值" id="news_ypos" name="news_ypos" @if (isset($postdata['news_ypos'])) value="{{ $postdata['news_ypos'] }}" @endif>

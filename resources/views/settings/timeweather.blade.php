@@ -22,13 +22,13 @@
             <label class="col-sm-3 control-label">尺寸</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">闊度</span>
                     <input type="number" class="form-control" id="news_width" name="news_width" placeholder="預設值" id="news_width" name="news_width" @if (isset($postdata['news_width'])) value="{{ $postdata['news_width'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">高度</span>
                     <input type="number" class="form-control" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" @if (isset($postdata['news_height'])) value="{{ $postdata['news_height'] }}" @endif>
@@ -93,13 +93,13 @@
             <label class="col-sm-3 control-label">時間位移</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">X-Pos</span>
                     <input type="number" class="form-control" id="time_xpos" name="time_xpos" placeholder="預設值" id="time_xpos" name="time_xpos" @if (isset($postdata['time_xpos'])) value="{{ $postdata['time_xpos'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">Y-Pos</span>
                     <input type="number" class="form-control" id="time_ypos" name="time_ypos" placeholder="預設值" id="time_ypos" name="time_ypos" placeholder="預設值" id="time_ypos" name="time_ypos" @if (isset($postdata['time_ypos'])) value="{{ $postdata['time_ypos'] }}" @endif>
@@ -117,13 +117,13 @@
             <label class="col-sm-3 control-label">日期位移</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">X-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="date_xpos" name="date_xpos" placeholder="預設值" id="date_xpos" name="date_xpos" @if (isset($postdata['date_xpos'])) value="{{ $postdata['date_xpos'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">Y-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="date_ypos" name="date_ypos" placeholder="預設值" id="date_ypos" name="date_ypos" @if (isset($postdata['date_ypos'])) value="{{ $postdata['date_ypos'] }}" @endif>
@@ -141,13 +141,13 @@
             <label class="col-sm-3 control-label">農曆日期位移</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">X-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="lunar_xpos" name="lunar_xpos" placeholder="預設值" id="lunar_xpos" name="lunar_xpos" @if (isset($postdata['lunar_xpos'])) value="{{ $postdata['lunar_xpos'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">Y-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="lunar_ypos" name="lunar_ypos" @if (isset($postdata['lunar_ypos'])) value="{{ $postdata['lunar_ypos'] }}" @endif>
@@ -165,13 +165,13 @@
             <label class="col-sm-3 control-label">溫度位移</label>
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">X-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="temp_xpos" name="temp_xpos" @if (isset($postdata['temp_xpos'])) value="{{ $postdata['temp_xpos'] }}" @endif>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon">Y-Pos</span>
                     <input type="number" class="form-control" placeholder="預設值" id="temp_ypos" name="temp_ypos" @if (isset($postdata['temp_ypos'])) value="{{ $postdata['temp_ypos'] }}" @endif>
