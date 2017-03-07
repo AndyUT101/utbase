@@ -37,7 +37,7 @@ class ImportController extends Controller
                 $data = array(
                     'title' => '上傳餐單檔案',
                     'navtitle' => 'uploadmeal',
-
+                    'success' => false,
                     );
                 return view('upload', $data);
 
@@ -166,7 +166,13 @@ class ImportController extends Controller
 
             $success = Storage::delete('excel/' . $excelkey . '.xlsx');
 
-            return 'ok';
+            $data = array(
+                    'title' => '上傳餐單檔案',
+                    'navtitle' => 'uploadmeal',
+                    'success' => true,
+                    );
+
+            return view('upload', $data);
     }
 
     /**

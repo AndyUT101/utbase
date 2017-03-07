@@ -15,6 +15,40 @@
   <div class="col-md-12">
     <div class="panel panel-cascade">
       <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil-square"></i> 時間及天氣框架</h3>
+      </div>
+      <div class="panel-body">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">尺寸</label>
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="input-group">
+                    <span class="input-group-addon">闊度</span>
+                    <input type="number" class="form-control" id="news_width" name="news_width" placeholder="預設值" id="news_width" name="news_width" @if (isset($postdata['news_width'])) value="{{ $postdata['news_width'] }}" @endif>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="input-group">
+                    <span class="input-group-addon">高度</span>
+                    <input type="number" class="form-control" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" placeholder="預設值" id="news_height" name="news_height" @if (isset($postdata['news_height'])) value="{{ $postdata['news_height'] }}" @endif>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <p class="help-block"></p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-cascade">
+      <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-pencil-square"></i> 天氣設定</h3>
       </div>
       <div class="panel-body">

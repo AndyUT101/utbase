@@ -1,5 +1,14 @@
 @extends('layouts.utbase')
 @section('content')
+@if ($success)
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-success">
+      餐單設定已更新
+    </div>
+  </div>
+</div>
+@endif
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-cascade panel-file-upload">
