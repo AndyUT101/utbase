@@ -88,6 +88,17 @@ function updateFeed(){
 	     	feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9);
 	    feedstring += "                ";	
      }
+
+     document.getElementById('newstitle').innerHTML = feedstring;
+
+     $('.marquee').marquee({
+	    duration: 5000,
+	    gap: 50,
+	    delayBeforeStart: 0,
+	    direction: 'left',
+	    duplicated: true
+	});
+
    }
  });
 }
@@ -105,7 +116,7 @@ function showRandomMarquee() {
 
 $('.marquee').bind('finished', showRandomMarquee);
 
-showRandomMarquee();
+//showRandomMarquee();
 
 
 // <--- Init loop object--->
