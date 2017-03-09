@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>meal</title>
-<script src="{{ url('js/jquery-1.10.2.min.js"></script>
+<script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
 <script src="{{ url('js/flowtype.js') }}"></script>
 <script src="{{ url('js/jquery.textfill.min.js') }}"></script>
 <style>
