@@ -116,8 +116,16 @@ function getCurrentMeal(){
 	        document.getElementById('dinner2').innerHTML = data['dinner2'];
 	        document.getElementById('supper1').innerHTML = data['supper1'];
 	        document.getElementById('supper2').innerHTML = data['supper2'];
-	        document.getElementById('tmr1').innerHTML = data['tmr1'];
-	        document.getElementById('tmr2').innerHTML = data['tmr2'];
+
+			if (typeof data['tmr1'] == "undefined")	        
+	        	document.getElementById('tmr1').innerHTML = "";
+	        else
+	        	document.getElementById('tmr1').innerHTML = data['tmr1'];
+
+			if (typeof data['tmr2'] == "undefined")	 
+	        	document.getElementById('tmr2').innerHTML = "";
+			else
+	        	document.getElementById('tmr2').innerHTML = data['tmr2'];
 
 	        console.log("weather data updated.");
 
