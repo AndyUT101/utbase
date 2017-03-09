@@ -50,6 +50,7 @@ div.newsfeed div#marquee {
 	margin-bottom: 40px;
 	overflow: hidden;
     height: 80px;
+    white-space: nowrap;
 }
 </style>
 <script>
@@ -79,12 +80,18 @@ function updateFeed(){
 
      	feedstring += feeddata['items'][i]['title'] + " (" + 
 	     	feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9);
-	    feedstring += "                ";	
+	    feedstring += "　　　　　　　　　　";	
      }
 
      document.getElementById('marquee').innerHTML = feedstring;
 
-
+$('#marquee').marquee({
+    duration: 50000,
+    gap: 50,
+    delayBeforeStart: 0,
+    direction: 'left',
+    duplicated: true
+});
 
    }
  });
