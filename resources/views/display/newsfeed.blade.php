@@ -45,14 +45,8 @@ div.newsfeed {
 	background-image: url("{{ url('images/bg/newsfeed.jpg') }}");
 }
 
-div.newsfeed div {
-	width: 285px;
-	height: 185px;
-    position: absolute;
-	text-align: center;
-}
 
-div.newsfeed div p {
+div.newsfeed div.marquee {
 	width: 285px;
 	margin-bottom: 40px;
 	overflow: hidden;
@@ -71,7 +65,7 @@ var rthk_news_xml = "http://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
 
 $(document).ready(function(){
 
-var feedstring;
+var feedstring = "";
 
 function updateFeed(){
  jQuery.getFeed({
