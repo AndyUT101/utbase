@@ -30,9 +30,11 @@ p {
 	margin: 0; padding: 0;
 }
 
-p#newstitle {
+div.marquee {
 	padding: 20px;
     font-size: 50px;
+    overflow: hidden;
+    width: 100%;
 }
 
 div.newsfeed {
@@ -94,13 +96,13 @@ function updateFeed(){
 function showRandomMarquee() {
 	updateFeed();
 
-	$('p.newstitle')
+	$('.marquee')
 	.marquee('destroy')
 	.html(feedstring)
 	.marquee({duration: 2000});
 }
 
-$('p.newstitle').bind('finished', showRandomMarquee);
+$('.marquee').bind('finished', showRandomMarquee);
 
 showRandomMarquee();
 
@@ -128,7 +130,7 @@ function loop(){
 
 <body>
 	<div class="newsfeed">
-		<p id="newstitle"></p>
+		<div class="marquee"></div>
 	</div>
 </body>
 
