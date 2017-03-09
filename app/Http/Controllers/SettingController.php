@@ -65,4 +65,13 @@ class SettingController extends Controller
         return view('settings/' . $updateitem, $data);
     }
 
+    public function noticepage(){
+        $data = array(
+            'title' => "系統資訊",
+            'navtitle' => 'notice',
+            );
+
+        return view('notice', $data);
+    }
+
 }

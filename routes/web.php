@@ -33,8 +33,9 @@ Route::get('/setting/newsfeed', 'DisplayController@getNewsfeed');
 Route::get('/api/{updateitem}', 'DisplayController@getJSON');
 
 Route::get('/display/{displayitem}', 'DisplayController@showDisplay');
+Route::get('/notice', 'SettingController@noticepage');
+
+
 
 Route::post('/setting/{updateitem}/update', 'SettingController@update');
-
-
 Route::post('/import/{doctype}', 'ImportController@processxls');

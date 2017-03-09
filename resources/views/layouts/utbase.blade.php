@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Basic Template | Cascade Flat , Responsive Bootstrap 3.0 Admin Template</title>
+    <title>{{ $title }} | 蔚耆苑餐單顯示系統</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
@@ -76,6 +76,8 @@
                   @if ($navtitle == 'newsfeed') <li class="active"> @else <li> @endif<a href="{{ url('/setting/newsfeed') }}" data-original-title="Input Masks"><i class="fa fa-pencil-square"></i><span class="hidden-minibar"> 新聞資訊</span></a></li>
                 </ul>
               </li>
+
+              @if ($navtitle == 'notice') <li class="active"> @else <li> @endif<a href="{{ url('notice') }}" data-original-title="Top Navbar"><i class="fa fa-indent"></i><span class="hidden-minibar"> 系統資訊 </span></a></li>
 
               <ul class="list-group theme-options">
                 <li class="list-group-item" href="#">
