@@ -5,7 +5,7 @@
 <title>meal</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="{{ url('js/flowtype.js') }}"></script>
-<script src="{{ url('js/jquery.textfill.min.js') }}"</script>
+<script src="{{ url('js/jquery.textfill.min.js') }}"></script>
 <style>
 
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
