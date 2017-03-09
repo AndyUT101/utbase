@@ -25,57 +25,61 @@ div.meal {
 }
 
 div.meal div {
-	width: 285px;
-	height: 185px;
+	width: 310px;
+    height: 205px;
     position: absolute;
 	text-align: center;
 }
 
-div.meal div div.block {
+div.meal div.block {
 	width: 310px;
     height: 90px;
 	margin-bottom: 35px;
 	overflow: hidden;
 }
 
+div.meal div.block:nth-child(2) {
+    top: 100px;
+}
+
 div.meal div.breakfast {
-	top: 340px;
-	left: 60px;
+	top: 325px;
+    left: 30px;
 }
 
 div.meal div.lunch {
-	top: 340px;
-	left: 410px;
+	top: 325px;
+    left: 408px;
 }
 
 div.meal div.soup {
-	top: 340px;
-	left: 752px;
+    top: 325px;
+    left: 776px;
 }
 
 div.meal div.fruit {
-	top: 340px;
-	left: 1098px;
+	top: 325px;
+	left: 1146px;
 }
 
 div.meal div.teatime {
-	top: 685px;
-	left: 60px;
+	top: 697px;
+	left: 30px;
 }
 
 div.meal div.dinner {
 	top: 685px;
-	left: 410px;
+	left: 408px;
 }
 
 div.meal div.supper {
 	top: 685px;
-	left: 752px;
+	left: 776px;
 }
 
 div.meal div.tmr {
 	top: 685px;
-	left: 1098px;
+	left: 1146px;
 }
 </style>
 <script>
