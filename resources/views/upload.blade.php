@@ -22,7 +22,7 @@
                       </h3>
       </div>
       <div class="panel-body panel-border">
-        上傳附餐單資料的xlsx檔案，請在<a href="{{ url('/resource/template') }}" target="_blank">此處下載範本文件</a>。
+        上傳餐單資料的xlsx檔案，請在<a href="{{ url('/resource/template') }}" target="_blank">此處下載範本文件</a>。
       </div>
       <!-- /panel body -->
     </div>
