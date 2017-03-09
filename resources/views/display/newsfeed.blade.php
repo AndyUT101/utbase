@@ -103,6 +103,8 @@ function updateFeed(){
  });
 }
 
+updateFeed();
+
 
 
 function showRandomMarquee() {
