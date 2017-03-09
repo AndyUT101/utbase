@@ -83,7 +83,7 @@ function updateFeed(){
 	    feedstring += "                ";	
      }
 
-     document.getElementById('newstitle').innerHTML = feedstring;
+     document.getElementById('marquee').innerHTML = feedstring;
 
      $('.marquee').marquee({
 	    duration: 5000,
