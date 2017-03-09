@@ -152,6 +152,7 @@
     <script src="{{ url('js/bic_calendar.js') }}"></script>
     <script src="{{ url('js/jquery.accordion.js') }}"></script>
     <script src="{{ url('js/theme-options.js') }}"></script>
+    <script src="{{ url('js/jquery.textfill.min.js') }}"</script>
 
     <script src="{{ url('js/bootstrap-progressbar.js') }}"></script>
     <script src="{{ url('js/bootstrap-progressbar-custom.js') }}"></script>
