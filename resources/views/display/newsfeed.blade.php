@@ -84,13 +84,7 @@ function updateFeed(){
 
      document.getElementById('marquee').innerHTML = feedstring;
 
-     $('.marquee').marquee({
-	    duration: 5000,
-	    gap: 50,
-	    delayBeforeStart: 0,
-	    direction: 'left',
-	    duplicated: true
-	});
+
 
    }
  });
