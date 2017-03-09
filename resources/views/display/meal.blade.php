@@ -36,10 +36,11 @@ div.meal div.block {
     height: 90px;
 	margin-bottom: 35px;
 	overflow: hidden;
+	line-height: 90px;
 }
 
 div.meal div.block:nth-child(2) {
-    top: 100px;
+    top: 115px;
 }
 
 div.meal div.breakfast {
@@ -68,17 +69,17 @@ div.meal div.teatime {
 }
 
 div.meal div.dinner {
-	top: 685px;
+	top: 697px;
 	left: 408px;
 }
 
 div.meal div.supper {
-	top: 685px;
+	top: 697px;
 	left: 776px;
 }
 
 div.meal div.tmr {
-	top: 685px;
+	top: 697px;
 	left: 1146px;
 }
 </style>
