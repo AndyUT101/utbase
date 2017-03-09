@@ -31,7 +31,7 @@ p {
 	margin: 0; padding: 0;
 }
 
-div.marquee {
+div#marquee {
 	padding: 20px;
     font-size: 50px;
     overflow: hidden;
@@ -46,8 +46,7 @@ div.newsfeed {
 }
 
 
-div.newsfeed div.marquee {
-	width: 285px;
+div.newsfeed div#marquee {
 	margin-bottom: 40px;
 	overflow: hidden;
     height: 80px;
@@ -138,7 +137,7 @@ function loop(){
 
 <body>
 	<div class="newsfeed">
-		<div class="marquee"></div>
+		<div id="marquee"></div>
 	</div>
 </body>
 
