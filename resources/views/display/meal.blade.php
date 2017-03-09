@@ -121,7 +121,7 @@ function getCurrentMeal(){
 
 	        console.log("weather data updated.");
 
-	        $('div.block').textfill();
+	        $('div.block').textfill({ 'maxFontPixels' : 50, });
 	    },
 
 	     error:function(xhr, ajaxOptions, thrownError){ 
