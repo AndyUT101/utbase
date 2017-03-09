@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>timeweather</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{{ url('js/jquery-1.10.2.min.js"></script>
+<script src="{{ url('js/jquery.marquee.min.js') }}"></script>
 <style>
 
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
