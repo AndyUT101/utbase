@@ -31,11 +31,11 @@ div.meal div {
 	text-align: center;
 }
 
-div.meal div p {
-	width: 285px;
+div.meal div div.block {
+	width: 310px;
+    height: 90px;
 	margin-bottom: 35px;
 	overflow: hidden;
-    height: 80px;
 }
 
 div.meal div.breakfast {
@@ -89,10 +89,6 @@ var weatherdata = null;
 
 $(document).ready(function(){
 
-
-
-
-
 // <--- Get meal --->
 function getCurrentMeal(){
 	$.ajax({
@@ -120,14 +116,7 @@ function getCurrentMeal(){
 
 	        console.log("weather data updated.");
 
-	        $('div.meal div p').flowtype({
-			minimum   : 250,
-			maximum   : 285,
-			minFont   : 26,
-			maxFont   : 40,
-			fontRatio : 30,
-			lineRatio : 1.45
-			});
+	        $('div.block').textfill();
 	    },
 
 	     error:function(xhr, ajaxOptions, thrownError){ 
@@ -175,43 +164,43 @@ loop();
 <body>
 	<div class="meal">
 		<div class="breakfast">
-			<p id="breakfast1"></p>
-			<p id="breakfast2"></p>
+			<div class="block"><span id="breakfast1"></span></div>
+			<div class="block"><span id="breakfast2"></span></div>
 		</div>
 
 		<div class="lunch">
-			<p id="lunch1"></p>
-			<p id="lunch2"></p>
+			<div class="block"><span id="lunch1"></span></div>
+			<div class="block"><span id="lunch2"></span></div>
 		</div>
 
 		<div class="soup">
-			<p id="soup1"></p>
-			<p id="soup2"></p>
+			<div class="block"><span id="soup1"></span></div>
+			<div class="block"><span id="soup2"></span></div>
 		</div>
 
 		<div class="fruit">
-			<p id="fruit1"></p>
-			<p id="fruit2"></p>
+			<div class="block"><span id="fruit1"></span></div>
+			<div class="block"><span id="fruit2"></span></div>
 		</div>
 
 		<div class="teatime">
-			<p id="teatime1"></p>
-			<p id="teatime2"></p>
+			<div class="block"><span id="teatime1"></span></div>
+			<div class="block"><span id="teatime2"></span></div>
 		</div>
 
 		<div class="dinner">
-			<p id="dinner1"></p>
-			<p id="dinner2"></p>
+			<div class="block"><span id="dinner1"></span></div>
+			<div class="block"><span id="dinner2"></span></div>
 		</div>
 
 		<div class="supper">
-			<p id="supper1"></p>
-			<p id="supper2"></p>
+			<div class="block"><span id="supper1"></span></div>
+			<div class="block"><span id="supper2"></span></div>
 		</div>
 
 		<div class="tmr">
-			<p id="tmr1"></p>
-			<p id="tmr2"></p>
+			<div class="block"><span id="tmr1"></span></div>
+			<div class="block"><span id="tmr2"></span></div>
 		</div>
 
 	</div>
