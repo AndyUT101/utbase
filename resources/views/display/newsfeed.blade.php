@@ -67,14 +67,42 @@ var rthk_news_xml = "http://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
 
 $(document).ready(function(){
 
+var feedstring;
+
+function updateFeed(){
  jQuery.getFeed({
    url: rthk_news_xml,
    success: function(feed) {
      feeddata = feed;
      feedlength = feeddata['items'].length;
-     loop();
+     //loop();
+
+     for (var i = 0; i < feedlength; i++){
+     	if (i == 0) feedstring = "";
+
+     	feedstring += feeddata['items'][i]['title'] + " (" + 
+	     	feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9);
+	    feedstring += "                ";	
+     }
    }
  });
+}
+
+
+
+function showRandomMarquee() {
+	updateFeed();
+
+	$('p.newstitle')
+	.marquee('destroy')
+	.html(feedstring)
+	.marquee({duration: 2000});
+}
+
+$('p.newstitle').bind('finished', showRandomMarquee);
+
+showRandomMarquee();
+
 
 // <--- Init loop object--->
 function loop(){
