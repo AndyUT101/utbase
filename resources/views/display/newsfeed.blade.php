@@ -52,6 +52,33 @@ div.newsfeed div#marquee {
     height: 80px;
     white-space: nowrap;
 }
+
+
+.marquee {
+    width: 450px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px green solid;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    text-indent: 0;
+    border: 1px red solid;
+    animation: marquee 180s linear infinite;
+}
+/*.marquee span:hover {
+    animation-play-state: paused
+}*/
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
 </style>
 <script>
 // <--- Init data object--->
@@ -79,19 +106,12 @@ function updateFeed(){
      	if (i == 0) feedstring = "";
 
      	feedstring += feeddata['items'][i]['title'] + " (" + 
-	     	feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9);
+	     	feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9) + ")";
 	    feedstring += "　　　　　　　　　　";	
      }
 
-     document.getElementById('marquee').innerHTML = feedstring;
+     document.getElementById('content').innerHTML = feedstring;
 
-$('#marquee').marquee({
-    duration: 50000,
-    gap: 50,
-    delayBeforeStart: 0,
-    direction: 'left',
-    duplicated: true
-});
 
    }
  });
@@ -137,9 +157,11 @@ function loop(){
 </head>
 
 <body>
-	<div class="newsfeed">
-		<div id="marquee"></div>
-	</div>
+    <div class="newsfeed">
+        <div id="marquee" class="marquee">
+            <span id="content"></span>
+        </div>
+    </div>
 </body>
 
 </html>
