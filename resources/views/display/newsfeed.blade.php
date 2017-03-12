@@ -70,7 +70,11 @@ div.newsfeed div#marquee {
     border: 1px red solid;
     animation: marquee 180s linear infinite;
 }
+/*.marquee span:hover {
+    animation-play-state: paused
+}*/
 
+/* Make it move */
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
@@ -108,58 +112,45 @@ function updateFeed(){
 
      document.getElementById('content').innerHTML = feedstring;
 
+     !function(a){a.fn.marquee=function(b){function e(a,b,c){var d=c.behavior,e=c.width,f=c.dir,g=0;return g="alternate"==d?1==a?b[c.widthAxis]-2*e:e:"slide"==d?a==-1?f==-1?b[c.widthAxis]:e:f==-1?b[c.widthAxis]-2*e:0:a==-1?b[c.widthAxis]:0}function f(){for(var b=c.length,d=null,g=null,h={},i=[],j=!1;b--;)d=c[b],g=a(d),h=g.data("marqueeState"),g.data("paused")!==!0?(d[h.axis]+=h.scrollamount*h.dir,j=h.dir==-1?d[h.axis]<=e(h.dir*-1,d,h):d[h.axis]>=e(h.dir*-1,d,h),"scroll"==h.behavior&&h.last==d[h.axis]||"alternate"==h.behavior&&j&&h.last!=-1||"slide"==h.behavior&&j&&h.last!=-1?("alternate"==h.behavior&&(h.dir*=-1),h.last=-1,g.trigger("stop"),h.loops--,0===h.loops?("slide"!=h.behavior?d[h.axis]=e(h.dir,d,h):d[h.axis]=e(h.dir*-1,d,h),g.trigger("end")):(i.push(d),g.trigger("start"),d[h.axis]=e(h.dir,d,h))):i.push(d),h.last=d[h.axis],g.data("marqueeState",h)):i.push(d);c=i,c.length&&setTimeout(f,25)}var c=[],d=this.length;return this.each(function(g){var h=a(this),i=h.attr("width")||h.width(),j=h.attr("height")||h.height(),k=h.after("<div "+(b?'class="'+b+'" ':"")+'style="display: block-inline; width: '+i+"px; height: "+j+'px; overflow: hidden;"><div style="float: left; white-space: nowrap;">'+h.html()+"</div></div>").next(),l=k.get(0),n=(h.attr("direction")||"left").toLowerCase(),o={dir:/down|right/.test(n)?-1:1,axis:/left|right/.test(n)?"scrollLeft":"scrollTop",widthAxis:/left|right/.test(n)?"scrollWidth":"scrollHeight",last:-1,loops:h.attr("loop")||-1,scrollamount:h.attr("scrollamount")||this.scrollAmount||2,behavior:(h.attr("behavior")||"scroll").toLowerCase(),width:/left|right/.test(n)?i:j};h.attr("loop")==-1&&"slide"==o.behavior&&(o.loops=1),h.remove(),/left|right/.test(n)?k.find("> div").css("padding","0 "+i+"px"):k.find("> div").css("padding",j+"px 0"),k.bind("stop",function(){k.data("paused",!0)}).bind("pause",function(){k.data("paused",!0)}).bind("start",function(){k.data("paused",!1)}).bind("unpause",function(){k.data("paused",!1)}).data("marqueeState",o),c.push(l),l[o.axis]=e(o.dir,l,o),k.trigger("start"),g+1==d&&f()}),a(c)}}(jQuery);
+
+    $('div.marquee').marquee();
 
    }
  });
 }
 
-//updateFeed();
+updateFeed();
 
 
 
-function showRandomMarquee() {
-	updateFeed();
+var time = new Date().getTime();
+     $(document.body).bind("mousemove keypress", function(e) {
+         time = new Date().getTime();
+     });
 
-	$('.marquee')
-	.marquee('destroy')
-	.html(feedstring)
-	.marquee({duration: 2000});
-}
+     function refresh() {
+         if(new Date().getTime() - time >= 60000) 
+             window.location.reload(true);
+         else 
+             setTimeout(refresh, 60000);
+     }
 
-$('.marquee').bind('finished', showRandomMarquee);
+     setTimeout(refresh, 60000);
 
-//showRandomMarquee();
-
-
-// <--- Init loop object--->
-function loop(){
-	console.log(currentread);
-	if (feedlength > 0) {
-		if (currentread >= feedlength)
-			currentread = 0;
-		document.getElementById('newstitle').innerHTML = feeddata['items'][currentread]['title'] + " (" + 
-	     	feeddata['items'][currentread]['updated'].substring(feeddata['items'][currentread]['updated'].length-14, feeddata['items'][currentread]['updated'].length-9)
-	      + ")";
-	    currentread += 1;
-
-	}
-	var looptimeout = setTimeout(loop, updatefreq);
-}
-
-// End <--- Init loop object--->
 
 });
 </script>
 </head>
 
 <body>
-    <div class="newsfeed">
-        <div id="marquee" class="marquee">
-            <span id="content">
-                男子浪茄灣玩滑翔傘撞山坡受傷 (21:34)　　　　　　　　　　胡國興晤少數族裔代表 (19:46)　　　　　　　　　　下周日特首選舉論壇　公眾可提交問題 (19:43)　　　　　　　　　　曹星如取21連勝　料需時2個月待傷患康復後重投訓練 (19:28)　　　　　　　　　　多個商會反對逐步取消強積金對沖 (18:54)　　　　　　　　　　8旬男病人染鏈狀乳桿菌死亡　高永文未回應是否誤診 (18:51)　　　　　　　　　　馬紹祥憂外圍環境推高樓價　並稱關注地價高企 (18:49)　　　　　　　　　　梁振英重申UGL事件無利益衝突　簽協議時並非特首 (18:45)　　　　　　　　　　特首選舉民間投票　理大票站因爭議未能開放 (18:42)　　　　　　　　　　3名特首候選人首次同台　論教育及重啟政改 (18:38)　　　　　　　　　　林建岳指董建華說「支持攬過的人」　多名政協稱沒不公 (18:36)　　　　　　　　　　鍾國斌倡政府墊支150億成立基金助僱主付遣散費 (18:30)　　　　　　　　　　馮偉華：教協按會員市民意見及政綱綑綁投票 (17:33)　　　　　　　　　　林鄭月娥：如指政改是一人「衰咗」與團隊精神有出入 (17:30)　　　　　　　　　　袁國強張炳良明日上京商討高鐵香港段事宜 (17:21)　　　　　　　　　　回應覆核議員資格案　曾俊華林鄭月娥均稱依法辦事 (17:17)　　　　　　　　　　約百名市民遊行反對林鄭月娥　梁家傑余若薇參與 (17:07)　　　　　　　　　　梁振英回應UGL事件　稱簽協議時並非行會成員或特首 (17:02)　　　　　　　　　　胡國興曾俊華支持幼師訂薪級表　林鄭月娥倡檢視政策 (16:54)　　　　　　　　　　曾俊華謝教育界提名　林鄭稱辦峰會　胡國興批現屆官員 (16:50)　　　　　　　　　　
-            </span>
-        </div>
-    </div>
+	<div class="newsfeed">
+		<div class="marquee">
+			<div style="float: left; white-space: nowrap; padding: 0px 600px; font-size: 50px;">
+            <span id="content"></span>
+            </div>
+		</div>
+	</div>
 </body>
 
 </html>
