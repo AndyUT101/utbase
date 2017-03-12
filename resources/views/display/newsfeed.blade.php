@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>newsfeed</title>
 <script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ url('js/jquery.jfeed.js') }}"></script>
 <style>
 @import  url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 * {
