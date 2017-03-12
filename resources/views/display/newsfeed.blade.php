@@ -33,7 +33,7 @@ div.newsfeed div#marquee {
 <script>
 // <--- Init data object--->
 
-var updatefreq = 5000;
+var updatefreq = 60000;
 var feeddata;
 var feedlength = 0;
 var currentread = 0;
@@ -67,6 +67,7 @@ function updateFeed(){
      $('marquee').marquee();
    }
  });
+ var timeout = setTimeout(updateFeed, updatefreq);
 }
 
 updateFeed();
