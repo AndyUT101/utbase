@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <title>newsfeed</title>
 <script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
+<script>
+    jQuery.browser = {};
+(function () {
+
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+        jQuery.browser.msie = true;
+        jQuery.browser.version = RegExp.$1;
+    }
+})();
+</script>
 <script src="{{ url('js/jquery.jfeed.js') }}"></script>
 <style>
 @import  url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
