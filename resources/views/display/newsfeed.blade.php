@@ -89,16 +89,16 @@ div.newsfeed div#marquee {
                 marqueeRedux = newMarquee[i];
                 $marqueeRedux = $(marqueeRedux);
                 marqueeState = $marqueeRedux.data('marqueeState');
-                marqueeState.axis = "scrollLeft";
+                "scrollLeft" = "scrollLeft";
 
                 if ($marqueeRedux.data('paused') !== true) {
                     // TODO read scrollamount, dir, behavior, loops and last from data
-                    marqueeRedux[marqueeState.axis] += (marqueeState.scrollamount * marqueeState.dir);
+                    marqueeRedux["scrollLeft"] += (marqueeState.scrollamount * marqueeState.dir);
 
                     // only true if it's hit the end
-                    hitedge = marqueeState.dir == -1 ? marqueeRedux[marqueeState.axis] <= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState) : marqueeRedux[marqueeState.axis] >= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
+                    hitedge = marqueeState.dir == -1 ? marqueeRedux["scrollLeft"] <= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState) : marqueeRedux["scrollLeft"] >= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
                     
-                    if ((marqueeState.behavior == 'scroll' && marqueeState.last == marqueeRedux[marqueeState.axis]) || (marqueeState.behavior == 'alternate' && hitedge && marqueeState.last != -1) || (marqueeState.behavior == 'slide' && hitedge && marqueeState.last != -1)) {                        
+                    if ((marqueeState.behavior == 'scroll' && marqueeState.last == marqueeRedux["scrollLeft"]) || (marqueeState.behavior == 'alternate' && hitedge && marqueeState.last != -1) || (marqueeState.behavior == 'slide' && hitedge && marqueeState.last != -1)) {                        
                         if (marqueeState.behavior == 'alternate') {
                             marqueeState.dir *= -1; // flip
                         }
@@ -109,10 +109,10 @@ div.newsfeed div#marquee {
                         marqueeState.loops--;
                         if (marqueeState.loops === 0) {
                             if (marqueeState.behavior != 'slide') {
-                                marqueeRedux[marqueeState.axis] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
+                                marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
                             } else {
                                 // corrects the position
-                                marqueeRedux[marqueeState.axis] = getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
+                                marqueeRedux["scrollLeft"] = getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
                             }
 
                             $marqueeRedux.trigger('end');
@@ -120,12 +120,12 @@ div.newsfeed div#marquee {
                             // keep this marquee going
                             newMarqueeList.push(marqueeRedux);
                             $marqueeRedux.trigger('start');
-                            marqueeRedux[marqueeState.axis] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
+                            marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
                         }
                     } else {
                         newMarqueeList.push(marqueeRedux);
                     }
-                    marqueeState.last = marqueeRedux[marqueeState.axis];
+                    marqueeState.last = marqueeRedux["scrollLeft"];
 
                     // store updated state only if we ran an animation
                     $marqueeRedux.data('marqueeState', marqueeState);
@@ -191,7 +191,7 @@ div.newsfeed div#marquee {
 
             newMarquee.push(marqueeRedux);
 
-            marqueeRedux[marqueeState.axis] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
+            marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
             $marqueeRedux.trigger('start');
             
             // on the very last marquee, trigger the animation
