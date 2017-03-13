@@ -48,11 +48,11 @@ div.newsfeed div#marquee {
 // <--- Init data object--->
 
 var updatefreq = 60000;
-var feeddata;
 var feedlength = 0;
 var currentread = 0;
 var width_start = 1920;
 var rthk_news_xml = "http://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
+var xml_getstatus = 0;
 // End <--- Init data object--->
 
 $(document).ready(function(){
@@ -61,27 +61,34 @@ $(document).ready(function(){
 
 var feedstring = "";
 
+function refreshFeed(){
+    $('marquee').fadeOut();
+    updateFeed();
+}
+
 function updateFeed(){
  jQuery.getFeed({
    url: rthk_news_xml,
    success: function(feed) {
-     feeddata = feed;
-     feedlength = feeddata['items'].length;
+    xml_getstatus = 1;
+
+     feed = feed;
+     feedlength = feed['items'].length;
 
      for (var i = 0; i < feedlength; i++){
         if (i == 0) feedstring = "";
 
-        feedstring += feeddata['items'][i]['title'] + " (" + 
-            feeddata['items'][i]['updated'].substring(feeddata['items'][i]['updated'].length-14, feeddata['items'][i]['updated'].length-9) + ")";
+        feedstring += feed['items'][i]['title'] + " (" + 
+            feed['items'][i]['updated'].substring(feed['items'][i]['updated'].length-14, feed['items'][i]['updated'].length-9) + ")";
         feedstring += "　　　"; 
      }
 
-     $('.newsfeed').html('<marquee behavior="scroll" scrollamount="3" direction="left" width="' + width_start + '"></marquee>');
+     $('.newsfeed').html('<marquee behavior="scroll" scrollamount="4" direction="left" width="' + width_start + '"></marquee>');
      $('marquee').text(feedstring);
      $('marquee').marquee();
    }
  });
- var timeout = setTimeout(updateFeed, updatefreq);
+ var timeout = setTimeout(updateFeed, xml_getstatus == 0 ? 10000 : updatefreq);
 }
 
 updateFeed();
