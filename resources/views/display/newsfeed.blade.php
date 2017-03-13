@@ -1,9 +1,8 @@
-<?php header('Access-Control-Allow-Origin: *'); ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Access-Control-Allow-Origin" content="*.rthk.hk">
 <title>newsfeed</title>
 <script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
 <script>
