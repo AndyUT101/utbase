@@ -161,7 +161,7 @@ loop();
 
 function checkCustom(){
 		$.ajax({
-	    url: {{ url("api/timeweather") }},
+	    url: "{{ url('api/timeweather') }}",
 	    type:"GET",
 	    dataType:'json',
 
