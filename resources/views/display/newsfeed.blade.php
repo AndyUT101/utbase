@@ -52,7 +52,7 @@ var updatefreq = 60000;
 var feedlength = 0;
 var currentread = 0;
 var width_start = 1920;
-var rthk_news_xml = "http://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
+var rthk_news_xml = "http://rthk9.rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
 var xml_getstatus = 0;
 // End <--- Init data object--->
 
