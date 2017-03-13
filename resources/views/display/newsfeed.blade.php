@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
 <title>newsfeed</title>
 <script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
 <script>
