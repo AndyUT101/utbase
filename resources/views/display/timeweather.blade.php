@@ -157,6 +157,83 @@ function loop(){
 }
 loop();
 
+	var timeout = setTimeout(loop, updatefreq);
+
+function checkCustom(){
+		$.ajax({
+	    url: {{ url("api/timeweather") }},
+	    type:"GET",
+	    dataType:'json',
+
+	    success: function(data){
+	    	if (data['updatefreq_weather'] != null){
+	    		updatefreq =  60000 * data['updatefreq_weather'];
+	    	} else {
+	    		updatefreq =  60000 * 30;
+	    	}
+
+	    	if (data['time_ypos'] != null){
+	    		$('div.time').css("top", 150 + data['time_ypos']);
+	    	} else {
+	    		$('div.time').css("top", 150);
+	    	}
+
+	    	if (data['date_ypos'] != null){
+	    		$('div.date').css("top", 380 + data['date_ypos']);
+	    	} else {
+	    		$('div.date').css("top", 380);
+	    	}
+
+	    	if (data['lunar_ypos'] != null){
+	    		$('div.lunar').css("top", 620 + data['lunar_ypos']);
+	    	} else {
+	    		$('div.lunar').css("top", 620);
+	    	}
+
+	    	if (data['temp_ypos'] != null){
+	    		$('div.temp').css("top", 850 + data['temp_ypos']);
+	    	} else {
+	    		$('div.temp').css("top", 850);
+	    	}
+	    },
+
+	     error:function(xhr, ajaxOptions, thrownError){ 
+	        	    	if (data['updatefreq_weather'] != null){
+	    		updatefreq =  60000 * data['updatefreq_weather'];
+	    	} else {
+	    		updatefreq =  60000 * 30;
+	    	}
+
+	    	if (data['time_ypos'] != null){
+	    		$('div.time').css("top", 150 + data['time_ypos']);
+	    	} else {
+	    		$('div.time').css("top", 150);
+	    	}
+
+	    	if (data['date_ypos'] != null){
+	    		$('div.date').css("top", 380 + data['date_ypos']);
+	    	} else {
+	    		$('div.date').css("top", 380);
+	    	}
+
+	    	if (data['lunar_ypos'] != null){
+	    		$('div.lunar').css("top", 620 + data['lunar_ypos']);
+	    	} else {
+	    		$('div.lunar').css("top", 620);
+	    	}
+
+	    	if (data['temp_ypos'] != null){
+	    		$('div.temp').css("top", 850 + data['temp_ypos']);
+	    	} else {
+	    		$('div.temp').css("top", 850);
+	    	}
+	     }
+	    var timeout = setTimeout(checkCustom, 60000);
+	});
+}
+
+
+
 // End <--- Init loop object--->
 
 
