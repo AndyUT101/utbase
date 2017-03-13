@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         date_default_timezone_set("Asia/Hong_Kong");
 
-        $recent_meal = DB::table('meals') -> where('availabledate', '>=', Carbon::today()->toDateString()) -> orderBy('availabledate', 'asc') -> take(3) -> get();;
+        $recent_meal = DB::table('meals') -> where('availabledate', '>=', Carbon::today()->toDateString()) -> orderBy('availabledate', 'asc') -> take(10) -> get();;
 
         //return $recent_meal;
         $data = array(

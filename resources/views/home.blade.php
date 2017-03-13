@@ -2,18 +2,18 @@
 @section('content')
 <!-- Demo Panel -->
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="panel ">
       <div class="panel-heading text-primary">
-        <h3 class="panel-title"><i class="fa fa-th"></i> 最近三日的餐單</h3>
+        <h3 class="panel-title"><i class="fa fa-th"></i> 最近十日的餐單</h3>
       </div>
       <div class="panel-body ">
         <table class="table">
           <thead>
             <tr>
-              <th>Date #</th>
-              <th>Meal</th>
-              <th>Menu</th>
+              <th>日期 #</th>
+              <th>正餐</th>
+              <th>提供食物</th>
             </tr>
           </thead>
           <tbody>
@@ -39,8 +39,8 @@
             <tr>
               <td></td>
               <td><span class="label bg-purple text-white">水果</span></td>
-              <td>{{ $menu -> frult1 }}
-                <br/>{{ $menu -> frult2 }}</td>
+              <td>{{ $menu -> fruit1 }}
+                <br/>{{ $menu -> fruit2 }}</td>
             </tr>
             <tr>
               <td></td>
