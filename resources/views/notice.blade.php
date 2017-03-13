@@ -21,17 +21,17 @@
             <tr>
               <td>新聞資訊feed</td>
               <td>1920 x 126</td>
-              <td>{{ url('display/newsfeed') }}</td>
+              <td><a href="{{ url('display/newsfeed') }}">{{ url('display/newsfeed') }}</a></td>
             </tr>
             <tr>
               <td>餐牌顯示</td>
               <td>1488 x 954</td>
-              <td>{{ url('display/meal') }}</td>
+              <td><a href="{{ url('display/meal') }}">{{ url('display/meal') }}</a></td>
             </tr>          
             <tr>
               <td>日期及時間顯示</td>
               <td>438 x 954</td>
-              <td>{{ url('display/dateweather') }}</td>
+              <td><a href="{{ url('display/dateweather') }}">{{ url('display/dateweather') }}</a></td>
             </tr>  
            </tbody>
         </table>
@@ -45,7 +45,8 @@
         </h3>
       </div>
     <div class="panel-body ">
-        <p>使用 <a href="https://www.yodeck.com">YoDeck - </a></p>
+        <p><a href="https://www.yodeck.com" type="button" class="btn btn-warning">使用 YoDeck</a>
+</p>
     </div>
   </div>
 </div>
