@@ -81,9 +81,14 @@ function updateFeed(){
      $('.newsfeed').html('<marquee behavior="scroll" scrollamount="4" direction="left" width="' + width_start + '"></marquee>');
      $('marquee').text(feedstring);
      $('marquee').marquee();
+   
+    var timeout = setTimeout(updateFeed, updatefreq);
+   },
+   fail: function(){
+       updateFeed();
    }
+
  });
- var timeout = setTimeout(updateFeed, xml_getstatus == 0 ? 10000 : updatefreq);
 }
 
 updateFeed();
