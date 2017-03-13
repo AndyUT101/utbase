@@ -161,7 +161,7 @@ loop();
 
 function checkCustom(){
 		$.ajax({
-	    url: "{{ url('api/timeweather') }}",
+	    url: "{{ url('/api/timeweather') }}",
 	    type:"GET",
 	    dataType:'json',
 
@@ -228,8 +228,9 @@ function checkCustom(){
 	    		$('div.temp').css("top", 850);
 	    	}
 	     }
-	    var timeout = setTimeout(checkCustom, 60000);
 	});
+    var settingtimeout = setTimeout(checkCustom, 60000);
+
 }
 
 
