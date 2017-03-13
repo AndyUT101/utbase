@@ -89,7 +89,8 @@ div.newsfeed div#marquee {
                 marqueeRedux = newMarquee[i];
                 $marqueeRedux = $(marqueeRedux);
                 marqueeState = $marqueeRedux.data('marqueeState');
-                
+                marqueeState.axis = "scrollLeft";
+
                 if ($marqueeRedux.data('paused') !== true) {
                     // TODO read scrollamount, dir, behavior, loops and last from data
                     marqueeRedux[marqueeState.axis] += (marqueeState.scrollamount * marqueeState.dir);
