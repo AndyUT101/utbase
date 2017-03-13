@@ -199,9 +199,9 @@ function checkCustom(){
 
 	     error:function(xhr, ajaxOptions, thrownError){ 
 	        	    	if (data['updatefreq_weather'] != null){
-	    		updatefreq =  60000 * data['updatefreq_weather'];
+	    		weather_updatefreq =  60000 * data['updatefreq_weather'];
 	    	} else {
-	    		updatefreq =  60000 * 30;
+	    		weather_updatefreq =  144000;
 	    	}
 
 	    	if (data['time_ypos'] != null){
