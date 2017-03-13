@@ -62,7 +62,7 @@ $(document).ready(function(){
 var feedstring = "";
 
 function refreshFeed(){
-    $('marquee').fadeOut();
+    $('.marquee').fadeOut();
     updateFeed();
 }
 
