@@ -44,8 +44,8 @@
         <h3 class="panel-title"><i class="fa fa-th"></i> 顯示位置設定
         </h3>
       </div>
-    <div class="panel-body ">
-        <p><a href="https://www.yodeck.com" type="button" class="btn btn-warning">使用 YoDeck</a>
+    <div class="panel-body">
+        <p><a href="https://www.yodeck.com" type="button" class="btn btn-warning" target="_blank">使用 YoDeck</a>
 </p>
     </div>
   </div>
