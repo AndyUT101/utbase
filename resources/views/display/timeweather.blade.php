@@ -232,7 +232,7 @@ function checkCustom(){
     var settingtimeout = setTimeout(checkCustom, 60000);
 
 }
-
+checkCustom();
 
 
 // End <--- Init loop object--->
