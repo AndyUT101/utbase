@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Access-Control-Allow-Origin" content="*.rthk.hk">
 <title>newsfeed</title>
 <script src="{{ url('js/jquery-1.10.2.min.js') }}"></script>
 <script>
@@ -45,169 +44,10 @@ div.newsfeed div#marquee {
     white-space: nowrap;
 }
 </style>
-    <script>
-/**
-* author Remy Sharp
-* url http://remysharp.com/tag/marquee
-*/
-
-
-(function ($) {
-    $.fn.marquee = function (klass) {
-        var newMarquee = [],
-            last = this.length;
-
-        // works out the left or right hand reset position, based on scroll
-        // behavior, current direction and new direction
-        function getReset(newDir, marqueeRedux, marqueeState) {
-            var behavior = marqueeState.behavior, width = marqueeState.width, dir = marqueeState.dir;
-            var r = 0;
-            if (behavior == 'alternate') {
-                r = newDir == 1 ? marqueeRedux[marqueeState.widthAxis] - (width*2) : width;
-            } else if (behavior == 'slide') {
-                if (newDir == -1) {
-                    r = dir == -1 ? marqueeRedux[marqueeState.widthAxis] : width;
-                } else {
-                    r = dir == -1 ? marqueeRedux[marqueeState.widthAxis] - (width*2) : 0;
-                }
-            } else {
-                r = newDir == -1 ? marqueeRedux[marqueeState.widthAxis] : 0;
-            }
-            return r;
-        }
-
-        // single "thread" animation
-        function animateMarquee() {
-            var i = newMarquee.length,
-                marqueeRedux = null,
-                $marqueeRedux = null,
-                marqueeState = {},
-                newMarqueeList = [],
-                hitedge = false;
-                
-            while (i--) {
-                marqueeRedux = newMarquee[i];
-                $marqueeRedux = $(marqueeRedux);
-                marqueeState = $marqueeRedux.data('marqueeState');
-
-                if ($marqueeRedux.data('paused') !== true) {
-                    // TODO read scrollamount, dir, behavior, loops and last from data
-                    marqueeRedux["scrollLeft"] += (marqueeState.scrollamount * marqueeState.dir);
-
-                    // only true if it's hit the end
-                    hitedge = marqueeState.dir == -1 ? marqueeRedux["scrollLeft"] <= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState) : marqueeRedux["scrollLeft"] >= getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
-                    
-                    if ((marqueeState.behavior == 'scroll' && marqueeState.last == marqueeRedux["scrollLeft"]) || (marqueeState.behavior == 'alternate' && hitedge && marqueeState.last != -1) || (marqueeState.behavior == 'slide' && hitedge && marqueeState.last != -1)) {                        
-                        if (marqueeState.behavior == 'alternate') {
-                            marqueeState.dir *= -1; // flip
-                        }
-                        marqueeState.last = -1;
-
-                        $marqueeRedux.trigger('stop');
-
-                        marqueeState.loops--;
-                        if (marqueeState.loops === 0) {
-                            if (marqueeState.behavior != 'slide') {
-                                marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
-                            } else {
-                                // corrects the position
-                                marqueeRedux["scrollLeft"] = getReset(marqueeState.dir * -1, marqueeRedux, marqueeState);
-                            }
-
-                            $marqueeRedux.trigger('end');
-                        } else {
-                            // keep this marquee going
-                            newMarqueeList.push(marqueeRedux);
-                            $marqueeRedux.trigger('start');
-                            marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
-                        }
-                    } else {
-                        newMarqueeList.push(marqueeRedux);
-                    }
-                    marqueeState.last = marqueeRedux["scrollLeft"];
-
-                    // store updated state only if we ran an animation
-                    $marqueeRedux.data('marqueeState', marqueeState);
-                } else {
-                    // even though it's paused, keep it in the list
-                    newMarqueeList.push(marqueeRedux);                    
-                }
-            }
-
-            newMarquee = newMarqueeList;
-            
-            if (newMarquee.length) {
-                setTimeout(animateMarquee, 25);
-            }            
-        }
-        
-        // TODO consider whether using .html() in the wrapping process could lead to loosing predefined events...
-        this.each(function (i) {
-            var $marquee = $(this),
-                width = $marquee.attr('width') || $marquee.width(),
-                height = $marquee.attr('height') || $marquee.height(),
-                $marqueeRedux = $marquee.after('<div ' + (klass ? 'class="' + klass + '" ' : '') + 'style="display: block-inline; width: ' + width + 'px; height: ' + height + 'px; overflow: hidden;"><div style="float: left; white-space: nowrap;">' + $marquee.html() + '</div></div>').next(),
-                marqueeRedux = $marqueeRedux.get(0),
-                hitedge = 0,
-                direction = ($marquee.attr('direction') || 'left').toLowerCase(),
-                marqueeState = {
-                    dir : /down|right/.test(direction) ? -1 : 1,
-                    axis : /left|right/.test(direction) ? 'scrollLeft' : 'scrollTop',
-                    widthAxis : /left|right/.test(direction) ? 'scrollWidth' : 'scrollHeight',
-                    last : -1,
-                    loops : $marquee.prop('loop') || -1,
-                    scrollamount : $marquee.attr('scrollamount') || this.scrollAmount || 2,
-                    behavior : ($marquee.attr('behavior') || 'scroll').toLowerCase(),
-                    width : /left|right/.test(direction) ? width : height
-                };
-            
-            // corrects a bug in Firefox - the default loops for slide is -1
-            if ($marquee.prop('loop') == -1 && marqueeState.behavior == 'slide') {
-                marqueeState.loops = 1;
-            }
-
-            $marquee.remove();
-            
-            // add padding
-            if (/left|right/.test(direction)) {
-                $marqueeRedux.find('> div').css('padding', '0 ' + width + 'px');
-            } else {
-                $marqueeRedux.find('> div').css('padding', height + 'px 0');
-            }
-            
-            // events
-            $marqueeRedux.bind('stop', function () {
-                $marqueeRedux.data('paused', true);
-            }).bind('pause', function () {
-                $marqueeRedux.data('paused', true);
-            }).bind('start', function () {
-                $marqueeRedux.data('paused', false);
-            }).bind('unpause', function () {
-                $marqueeRedux.data('paused', false);
-            }).data('marqueeState', marqueeState); // finally: store the state
-            
-            // todo - rerender event allowing us to do an ajax hit and redraw the marquee
-
-            newMarquee.push(marqueeRedux);
-
-            marqueeRedux["scrollLeft"] = getReset(marqueeState.dir, marqueeRedux, marqueeState);
-            $marqueeRedux.trigger('start');
-            
-            // on the very last marquee, trigger the animation
-            if (i+1 == last) {
-                animateMarquee();
-            }
-        });            
-
-        return $(newMarquee);
-    };
-}(jQuery));
-    </script>
-
 <script>
 // <--- Init data object--->
 
-var updatefreq = 60000;
+var updatefreq = 10000;
 var feedlength = 0;
 var currentread = 0;
 var width_start = 1920;
@@ -217,6 +57,7 @@ var xml_getstatus = 0;
 
 $(document).ready(function(){
 
+    !function(a){a.fn.marquee=function(b){function e(a,b,c){var d=c.behavior,e=c.width,f=c.dir,g=0;return g="alternate"==d?1==a?b[c.widthAxis]-2*e:e:"slide"==d?a==-1?f==-1?b[c.widthAxis]:e:f==-1?b[c.widthAxis]-2*e:0:a==-1?b[c.widthAxis]:0}function f(){for(var b=c.length,d=null,g=null,h={},i=[],j=!1;b--;)d=c[b],g=a(d),h=g.data("marqueeState"),g.data("paused")!==!0?(d[h.axis]+=h.scrollamount*h.dir,j=h.dir==-1?d[h.axis]<=e(h.dir*-1,d,h):d[h.axis]>=e(h.dir*-1,d,h),"scroll"==h.behavior&&h.last==d[h.axis]||"alternate"==h.behavior&&j&&h.last!=-1||"slide"==h.behavior&&j&&h.last!=-1?("alternate"==h.behavior&&(h.dir*=-1),h.last=-1,g.trigger("stop"),h.loops--,0===h.loops?("slide"!=h.behavior?d[h.axis]=e(h.dir,d,h):d[h.axis]=e(h.dir*-1,d,h),g.trigger("end")):(i.push(d),g.trigger("start"),d[h.axis]=e(h.dir,d,h))):i.push(d),h.last=d[h.axis],g.data("marqueeState",h)):i.push(d);c=i,c.length&&setTimeout(f,25)}var c=[],d=this.length;return this.each(function(g){var h=a(this),i=h.attr("width")||h.width(),j=h.attr("height")||h.height(),k=h.after("<div "+(b?'class="'+b+'" ':"")+'style="display: block-inline; width: '+i+"px; height: "+j+'px; overflow: hidden;"><div style="float: left; white-space: nowrap;">'+h.html()+"</div></div>").next(),l=k.get(0),n=(h.attr("direction")||"left").toLowerCase(),o={dir:/down|right/.test(n)?-1:1,axis:/left|right/.test(n)?"scrollLeft":"scrollTop",widthAxis:/left|right/.test(n)?"scrollWidth":"scrollHeight",last:-1,loops:h.attr("loop")||-1,scrollamount:h.attr("scrollamount")||this.scrollAmount||2,behavior:(h.attr("behavior")||"scroll").toLowerCase(),width:/left|right/.test(n)?i:j};h.attr("loop")==-1&&"slide"==o.behavior&&(o.loops=1),h.remove(),/left|right/.test(n)?k.find("> div").css("padding","0 "+i+"px"):k.find("> div").css("padding",j+"px 0"),k.bind("stop",function(){k.data("paused",!0)}).bind("pause",function(){k.data("paused",!0)}).bind("start",function(){k.data("paused",!1)}).bind("unpause",function(){k.data("paused",!1)}).data("marqueeState",o),c.push(l),l[o.axis]=e(o.dir,l,o),k.trigger("start"),g+1==d&&f()}),a(c)}}(jQuery);
 
 var feedstring = "";
 
@@ -247,7 +88,7 @@ function updateFeed(){
      $('marquee').marquee();
    }
  });
- var timeout = setTimeout(updateFeed, xml_getstatus == 0 ? 10000 : updatefreq);
+ var timeout = setTimeout(refreshFeed, xml_getstatus == 0 ? 10000 : updatefreq);
 }
 
 updateFeed();
