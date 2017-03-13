@@ -43,8 +43,6 @@
 
             <li><a href="#" class="user dropdown-toggle" data-toggle="dropdown"><span class="username"><img src="{{ url('images/userlogo.jpg') }}" class="user-avatar" alt="">  蔚耆苑 </span></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-cogs"></i> 設定</a></li>
-                <li class="divider"></li>
                 <li><a href="{{ url('/logout') }}" class="text-danger"><i class="fa fa-lock"></i> 登出</a></li>
               </ul>
           </ul>

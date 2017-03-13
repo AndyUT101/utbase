@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Screens | Cascade Flat , Responsive Bootstrap 3.0 Admin Template</title>
+  <title>登入 | 蔚耆苑餐單顯示系統</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Loading Bootstrap -->
@@ -15,7 +15,7 @@
 </head>
 <body>
   <div class="login-box">
-    <h1><i class='fa fa-bookmark'></i>&nbsp;Welcome To Cascade </h1>
+    <h1><i class='fa fa-bookmark'></i>&nbsp;請登入以使用系統</h1>
     <hr>
     <h5>LOGIN</h5>
 
