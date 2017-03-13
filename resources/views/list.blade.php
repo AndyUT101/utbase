@@ -34,8 +34,8 @@
                 <br/>{{ $menurow -> lunch2 }}</td>
               <td>{{ $menurow -> soup1 }}
                 <br/>{{ $menurow -> soup2 }}</td>
-              <td>{{ $menurow -> frult1 }}
-                <br/>{{ $menurow -> frult2 }}</td>
+              <td>{{ $menurow -> fruit1 }}
+                <br/>{{ $menurow -> fruit2 }}</td>
               <td>{{ $menurow -> teatime1 }}
                 <br/>{{ $menurow -> teatime2 }}</td>
               <td>{{ $menurow -> dinner1 }}
