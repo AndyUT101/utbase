@@ -157,7 +157,7 @@ function loop(){
 }
 loop();
 
-	var timeout = setTimeout(loop, updatefreq);
+	//var timeout = setTimeout(loop, updatefreq);
 
 function checkCustom(){
 		$.ajax({
