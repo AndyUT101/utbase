@@ -19,6 +19,11 @@
           </thead>
           <tbody>
             <tr>
+              <td>控制系統</td>
+              <td>--</td>
+              <td><a href="{{ url('/') }}">{{ url('/') }}</a></td>
+            </tr>
+            <tr>            <tr>
               <td>新聞資訊feed</td>
               <td>1920 x 126</td>
               <td><a href="{{ url('display/newsfeed') }}">{{ url('display/newsfeed') }}</a></td>
@@ -31,7 +36,7 @@
             <tr>
               <td>日期及時間顯示</td>
               <td>438 x 954</td>
-              <td><a href="{{ url('display/dateweather') }}">{{ url('display/dateweather') }}</a></td>
+              <td><a href="{{ url('display/timeweather') }}">{{ url('display/timeweather') }}</a></td>
             </tr>  
            </tbody>
         </table>
