@@ -143,7 +143,6 @@ function getCurrentTemp(){
 
 	
 }
-
 getCurrentTemp();
 
 // <--- Init loop object--->
@@ -167,9 +166,9 @@ function checkCustom(){
 
 	    success: function(data){
 	    	if (data['updatefreq_weather'] != null){
-	    		updatefreq =  60000 * data['updatefreq_weather'];
+	    		weather_updatefreq =  60000 * data['updatefreq_weather'];
 	    	} else {
-	    		updatefreq =  60000 * 30;
+	    		weather_updatefreq =  60000 * 30;
 	    	}
 
 	    	if (data['time_ypos'] != null){
