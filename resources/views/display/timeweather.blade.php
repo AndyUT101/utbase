@@ -143,7 +143,7 @@ function getCurrentTemp(){
 
 	
 }
-getCurrentTemp();
+
 
 // <--- Init loop object--->
 function loop(){
@@ -154,7 +154,6 @@ function loop(){
 	displayTime();
 	var looptimeout = setTimeout(loop, updatefreq);
 }
-loop();
 
 	//var timeout = setTimeout(loop, updatefreq);
 
@@ -165,6 +164,12 @@ function checkCustom(){
 	    dataType:'json',
 
 	    success: function(data){
+	    	if (data['source_weather'] != null){
+	    		weather_api_url = data['source_weather'];
+	    	} else {
+	    		weather_api_url = "http://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=92d11c0662b0aef09636babec2b18091";
+	    	}
+
 	    	if (data['updatefreq_weather'] != null){
 	    		weather_updatefreq =  60000 * data['updatefreq_weather'];
 	    	} else {
@@ -197,42 +202,14 @@ function checkCustom(){
 	    },
 
 	     error:function(xhr, ajaxOptions, thrownError){ 
-	        	    	if (data['updatefreq_weather'] != null){
-	    		weather_updatefreq =  60000 * data['updatefreq_weather'];
-	    	} else {
-	    		weather_updatefreq =  144000;
-	    	}
-
-	    	if (data['time_ypos'] != null){
-	    		$('div.time').css("top", 150 + data['time_ypos']);
-	    	} else {
-	    		$('div.time').css("top", 150);
-	    	}
-
-	    	if (data['date_ypos'] != null){
-	    		$('div.date').css("top", 380 + data['date_ypos']);
-	    	} else {
-	    		$('div.date').css("top", 380);
-	    	}
-
-	    	if (data['lunar_ypos'] != null){
-	    		$('div.lunar').css("top", 620 + data['lunar_ypos']);
-	    	} else {
-	    		$('div.lunar').css("top", 620);
-	    	}
-
-	    	if (data['temp_ypos'] != null){
-	    		$('div.temp').css("top", 850 + data['temp_ypos']);
-	    	} else {
-	    		$('div.temp').css("top", 850);
-	    	}
 	     }
 	});
     var settingtimeout = setTimeout(checkCustom, 60000);
 
 }
-//checkCustom();
-
+checkCustom();
+getCurrentTemp();
+loop();
 
 // End <--- Init loop object--->
 

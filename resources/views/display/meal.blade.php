@@ -154,19 +154,6 @@ fontRatio : 30,
 lineRatio : 1.45
 });
 
-// <--- Init loop object--->
-function loop(){
-	currentDateTime = new Date();
-
-	displayDate();
-	displayCurrentLunarDate();
-	displayTime();
-	var looptimeout = setTimeout(loop, updatefreq);
-}
-loop();
-
-// End <--- Init loop object--->
-
 
 });
 

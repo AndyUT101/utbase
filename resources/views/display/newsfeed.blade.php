@@ -91,6 +91,35 @@ function updateFeed(){
  });
 }
 
+function checkCustom(){
+        $.ajax({
+        url: "{{ url('/api/newsfeed') }}",
+        type:"GET",
+        dataType:'json',
+
+        success: function(data){
+            if (data['source_news'] != null){
+                rthk_news_xml = data['source_news'];
+            } else {
+                rthk_news_xml = "http://rthk9.rthk.hk/rthk/news/rss/c_expressnews_clocal.xml";
+            }
+
+            if (data['updatefreq_news'] != null){
+                updatefreq =  60000 * data['updatefreq_news'];
+            } else {
+                updatefreq =  60000 * 90;
+            }
+        },
+
+         error:function(xhr, ajaxOptions, thrownError){ 
+
+         }
+    });
+    var settingtimeout = setTimeout(checkCustom, 60000);
+
+}
+checkCustom();
+
 updateFeed();
 });
 </script>
