@@ -76,7 +76,7 @@ function displayDate() {
 }
 
 function displayTime() {
-	var ap = currentDateTime.getHours() < 12 ? 'am' : 'pm';
+	var ap = currentDateTime.getHours() < 12 ? '上午' : '下午';
     var h = currentDateTime.getHours() % 12;
     var m = currentDateTime.getMinutes();
     var s = currentDateTime.getSeconds();
@@ -85,7 +85,7 @@ function displayTime() {
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('current_time').innerHTML =
-    h + ":" + m + ":" + s + " " + ap;
+    ap + " " + h + ":" + m + ":" + s;
 }
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
