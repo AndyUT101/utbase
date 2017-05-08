@@ -76,7 +76,7 @@ function displayDate() {
 }
 
 function displayTime() {
-	var ap = currentDateTime.getHours() < 12 ? '上 午' : '下 午';
+	var ap = currentDateTime.getHours() < 12 ? '上午' : '下午';
     var h = currentDateTime.getHours() % 12;
     var m = currentDateTime.getMinutes();
     var s = currentDateTime.getSeconds();
